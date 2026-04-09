@@ -13,6 +13,11 @@ except Exception as e:
 print("Type your messages here:")
 while True:
     msg = input()
+    while msg == "":
+        msg = input()
     client_socket.send(msg.encode())
+
+    msg_cf = client_socket.recv(2048).decode()
+    print(msg_cf)
     if msg.lower() == "exit":
         break
